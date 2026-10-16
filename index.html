@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habit Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">
+          <span class="logo-icon">🎯</span>
+          <h1>Habit Tracker</h1>
+        </div>
+        <div class="date-display" id="currentDate"></div>
+      </div>
+    </header>
+
+    <!-- Stats -->
+    <section class="stats-section">
+      <div class="stat-card">
+        <span class="stat-number" id="totalHabits">0</span>
+        <span class="stat-label">Total de Hábitos</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" id="completedToday">0</span>
+        <span class="stat-label">Concluídos Hoje</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" id="progressPercent">0%</span>
+        <span class="stat-label">Progresso</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" id="bestStreak">0</span>
+        <span class="stat-label">Melhor Sequência 🔥</span>
+      </div>
+    </section>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <div class="progress-bar-wrap">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <span class="progress-text" id="progressText">0 de 0 hábitos concluídos</span>
+    </div>
+
+    <!-- Add Habit -->
+    <section class="add-section">
+      <h2>Adicionar Hábito</h2>
+      <form class="add-form" id="addHabitForm">
+        <div class="form-row">
+          <input
+            type="text"
+            id="habitNameInput"
+            placeholder="Nome do hábito (ex: Beber água)"
+            maxlength="50"
+            required
+          />
+          <select id="habitCategorySelect">
+            <option value="saude">💪 Saúde</option>
+            <option value="mente">🧠 Mente</option>
+            <option value="produtividade">📚 Produtividade</option>
+            <option value="social">🤝 Social</option>
+            <option value="financas">💰 Finanças</option>
+            <option value="outro">⭐ Outro</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <input
+            type="text"
+            id="habitDescInput"
+            placeholder="Descrição (opcional)"
+            maxlength="100"
+          />
+          <button type="submit" class="btn-add">
+            <span>＋</span> Adicionar
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs">
+      <button class="tab active" data-filter="all">Todos</button>
+      <button class="tab" data-filter="pending">Pendentes</button>
+      <button class="tab" data-filter="done">Concluídos</button>
+    </div>
+
+    <!-- Habit List -->
+    <section class="habits-section">
+      <div class="habits-list" id="habitsList"></div>
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">🌱</div>
+        <p>Nenhum hábito encontrado.</p>
+        <p class="empty-sub">Adicione seu primeiro hábito acima!</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <button class="btn-clear" id="clearAllBtn">🗑️ Limpar todos</button>
+      <span class="footer-text">Seus hábitos são salvos automaticamente</span>
+    </footer>
+
+  </div>
+
+  <!-- Edit Modal -->
+  <div class="modal-overlay" id="editModal">
+    <div class="modal">
+      <h3>Editar Hábito</h3>
+      <input type="text" id="editNameInput" placeholder="Nome" maxlength="50" />
+      <input type="text" id="editDescInput" placeholder="Descrição" maxlength="100" />
+      <select id="editCategorySelect">
+        <option value="saude">💪 Saúde</option>
+        <option value="mente">🧠 Mente</option>
+        <option value="produtividade">📚 Produtividade</option>
+        <option value="social">🤝 Social</option>
+        <option value="financas">💰 Finanças</option>
+        <option value="outro">⭐ Outro</option>
+      </select>
+      <div class="modal-actions">
+        <button class="btn-save" id="saveEditBtn">Salvar</button>
+        <button class="btn-cancel" id="cancelEditBtn">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
